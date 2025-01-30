@@ -14,7 +14,7 @@ Validate and transpile Butane config to Ignition config.
 
 ```terraform
 data "butane_config" "config" {
-  file = file("./config.bu")
+  content = file("./config.bu")
 }
 ```
 
@@ -22,8 +22,8 @@ data "butane_config" "config" {
 
 ```terraform
 data "butane_config" "config" {
-  file   = file("./config.bu")
-  strict = true
+  content = file("./config.bu")
+  strict  = true
 }
 ```
 

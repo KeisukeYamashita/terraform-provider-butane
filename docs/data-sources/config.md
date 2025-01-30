@@ -13,7 +13,7 @@ Validate and transpile Butane config to Ignition config.
 
 ```terraform
 data "butane_config" "config" {
-  file = file("./config.bu")
+  content = file("./config.bu")
 }
 ```
 
