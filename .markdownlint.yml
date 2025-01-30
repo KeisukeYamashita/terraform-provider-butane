@@ -1,0 +1,34 @@
+default: true
+
+# MD009/no-trailing-spaces
+MD009: false
+
+# MD012/no-multiple-blanks - Multiple consecutive blank lines
+MD012: false
+
+# MD013/line-length - Line length
+MD013: false
+
+# MD014/commands-show-output
+# The argument against dollar signs is that they break copy-paste,
+# but the Verda docs CSS already excludes them from selection.
+# There is no harm in unambiguously marking shell commands as such.
+MD014: false
+
+# MD024/no-duplicate-heading/no-duplicate-header - Multiple headings with the same content
+MD024:
+  # Only check sibling headings
+  allow_different_nesting: true
+
+# MD033/no-inline-html - Inline HTML
+MD033: false
+
+# MD034/no-bare-urls - Bare URL used
+MD034: false
+
+# MD041/first-line-heading/first-line-h1 - First line in a file should be a top-level heading
+# MDX doesn't allow to write import statement in the first line.
+MD041: false
+
+# MD046/code-block-style - Admonitions look like code to markdownlint
+MD046: false

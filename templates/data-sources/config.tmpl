@@ -1,0 +1,21 @@
+---
+page_title: "{{.Name}} {{.Type}} - {{.RenderedProviderName}}"
+description: |-
+    {{ .Description }}
+---
+
+# {{.Name}}
+
+{{ .Description }}
+
+## Example Usage
+
+### Basic
+
+{{ tffile (printf "%s%s%s" "examples/data-sources/" .Name "/data-source.tf") }}
+
+### Strict mode
+
+{{ tffile (printf "%s%s%s" "examples/data-sources/" .Name "/strict.tf") }}
+
+{{ .SchemaMarkdown | trimspace }}
