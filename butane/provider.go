@@ -25,7 +25,7 @@ type client struct {
 }
 
 func providerConfigureContextFunc(ctx context.Context, d *schema.ResourceData) (any, diag.Diagnostics) {
-	return client{
+	return &client{
 		Hash: sha256.New(),
 	}, nil
 }
