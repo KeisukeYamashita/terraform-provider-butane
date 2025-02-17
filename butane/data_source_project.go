@@ -29,6 +29,8 @@ func dataSourceConfig() *schema.Resource {
 					return
 				},
 			},
+			// Property follows the official Butane package.
+			// Ref: https://github.com/coreos/butane/blob/55aa746eb0b43099040268ba0c70ae3ac2a19567/internal/main.go#L56
 			"files_dir": {
 				Description: "Directory to embed the local files. Maps to `--files-dir` option on Butane CLI.",
 				Type:        schema.TypeString,
