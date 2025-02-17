@@ -68,7 +68,7 @@ func dataSourceButaneReadContext(ctx context.Context, d *schema.ResourceData, me
 	content := d.Get("content").(string)
 	strict := d.Get("strict").(bool)
 
-	if ok, v := d.Get("content").(bool); ok {
+	if ok, v := d.Get("pretty").(bool); ok {
 		opts.Pretty = v
 	}
 
