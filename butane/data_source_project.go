@@ -29,6 +29,11 @@ func dataSourceConfig() *schema.Resource {
 					return
 				},
 			},
+			"files_dir": {
+				Description: "Directory to embed the local files. Maps to `--files-dir` option on Butane CLI.",
+				Type:        schema.TypeString,
+				Optional:    true,
+			},
 			"ignition": {
 				Description: "Result Ignition configuration.",
 				Type:        schema.TypeString,
@@ -37,7 +42,7 @@ func dataSourceConfig() *schema.Resource {
 			// Property follows the official Butane package.
 			// Ref: https://github.com/coreos/butane/blob/55aa746eb0b43099040268ba0c70ae3ac2a19567/internal/main.go#L50
 			"pretty": {
-				Description: "Output formatted results.",
+				Description: "Output formatted results. Maps to `--pretty` option on Butane CLI.",
 				Default:     false,
 				Optional:    true,
 				Type:        schema.TypeBool,
@@ -45,7 +50,7 @@ func dataSourceConfig() *schema.Resource {
 			// Property follows the official Butane package.
 			// Ref: https://github.com/coreos/butane/blob/55aa746eb0b43099040268ba0c70ae3ac2a19567/internal/main.go#L49
 			"strict": {
-				Description: "Strictly check the format. Any warning will make transpile fail.",
+				Description: "Strictly check the format. Any warning will make transpile fail. Maps to `--strict` option on Butane CLI.",
 				Default:     false,
 				Optional:    true,
 				Type:        schema.TypeBool,
@@ -65,6 +70,10 @@ func dataSourceButaneReadContext(ctx context.Context, d *schema.ResourceData, me
 
 	if ok, v := d.Get("content").(bool); ok {
 		opts.Pretty = v
+	}
+
+	if v, ok := d.GetOk("files_dir"); ok {
+		opts.FilesDir = v.(string)
 	}
 
 	b, r, err := butane.TranslateBytes([]byte(content), opts)
