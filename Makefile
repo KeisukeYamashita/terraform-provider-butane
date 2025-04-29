@@ -7,7 +7,7 @@ build:
 
 .PHONY: doc
 doc:
-	@go generate ./...
+	@go tool tfplugindocs
 
 .PHONY: install_macos
 install_macos: build
