@@ -3,7 +3,7 @@ module github.com/KeisukeYamashita/terraform-provider-butane
 go 1.24
 
 require (
-	github.com/coreos/butane v0.23.0
+	github.com/coreos/butane v0.24.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.36.1
 	gopkg.in/yaml.v3 v3.0.1
 )
