@@ -2,6 +2,8 @@ package butane
 
 import (
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 
 	butane "github.com/coreos/butane/config"
 	"github.com/coreos/butane/config/common"
@@ -63,7 +65,6 @@ func dataSourceConfig() *schema.Resource {
 }
 
 func dataSourceButaneReadContext(ctx context.Context, d *schema.ResourceData, meta any) diag.Diagnostics {
-	c := meta.(*client)
 	var diags diag.Diagnostics
 	opts := common.TranslateBytesOptions{}
 
@@ -89,7 +90,8 @@ func dataSourceButaneReadContext(ctx context.Context, d *schema.ResourceData, me
 		return diag.Errorf("parsing error: %s, strict: %t", r.String(), strict)
 	}
 
-	d.SetId(string(c.Hash.Sum(b)))
+	sum := sha256.Sum256(b)
+	d.SetId(hex.EncodeToString(sum[:]))
 	d.Set("ignition", string(b))
 	return diags
 }
